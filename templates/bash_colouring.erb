@@ -1,0 +1,8 @@
+# configure bash to show coloured username and repo branch on command line
+if [[ ${EUID} == 0 ]];
+then
+  ucol='\[\e[01;31m\]'
+else
+  ucol='\[\e[01;32m\]'
+fi
+PS1="[$ucol\u\[\e[m\]@\h \W\[\033[1;32m\]\$(git branch 2>/dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ {\1}/')\[\033[0m\]]\\$ "

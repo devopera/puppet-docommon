@@ -1,0 +1,16 @@
+{
+  "name": "devopera-docommon",
+  "version": "0.9.4",
+  "author": "(c) Alex Stanhope, Devopera.com",
+  "summary": "Devopera common base configuration module",
+  "license": "Apache License, Version 2.0",
+  "source": "https://github.com/devopera/puppet-docommon",
+  "project_page": "http://devopera.com/module/docommon",
+  "issues_url": "https://github.com/devopera/puppet-docommon/issues",
+  "description": "The Devopera suite of modules rely on a minimal common infrastructure, \nsuch as an SSH server, at least one non-service-specific user to administer files etc.",
+  "dependencies": [
+    {"name":"attachmentgenie/ssh","version_requirement":"1.0.0"},
+    {"name":"saz/sudo","version_requirement":"2.0.9"},
+    {"name":"blentz/selinux_types","version_requirement":"0.1.0"}
+  ]
+}

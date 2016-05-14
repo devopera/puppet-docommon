@@ -1,0 +1,51 @@
+# devopera original modules
+git submodule add git@github.com:devopera/puppet-doapache.git modules/doapache
+git submodule add git@github.com:devopera/puppet-dorepos.git modules/dorepos
+git submodule add git@github.com:devopera/puppet-dopki.git modules/dopki
+git submodule add git@github.com:devopera/puppet-domysqldb.git modules/domysqldb
+git submodule add git@github.com:devopera/puppet-docsf.git modules/docsf
+git submodule add git@github.com:devopera/puppet-docommon.git modules/docommon
+git submodule add git@github.com:devopera/puppet-dosamba.git modules/dosamba
+git submodule add git@github.com:devopera/puppet-domotd.git modules/domotd
+git submodule add git@github.com:devopera/puppet-dopostfix.git modules/dopostfix
+git submodule add git@github.com:devopera/puppet-domantis.git modules/domantis
+git submodule add git@github.com:devopera/puppet-dopuppetmaster.git modules/dopuppetmaster
+git submodule add git@github.com:devopera/puppet-donagios.git modules/donagios
+git submodule add git@github.com:devopera/puppet-dorkhunter.git modules/dorkhunter
+git submodule add git@github.com:devopera/puppet-dodns.git modules/dodns
+git submodule add git@github.com:devopera/puppet-dodjango.git modules/dodjango
+git submodule add git@github.com:devopera/puppet-dodrupal.git modules/dodrupal
+git submodule add git@github.com:devopera/puppet-doffmpeg.git modules/doffmpeg
+git submodule add git@github.com:devopera/puppet-dopython.git modules/dopython
+# devopera app configurations
+git submodule add git@github.com:devopera/appconfig-drupal.git configs/drupal
+git submodule add git@github.com:devopera/appconfig-django.git configs/django
+git submodule add git@github.com:devopera/appconfig-wordpress.git configs/wordpress
+git submodule add git@github.com:devopera/appconfig-lamp.git configs/lamp
+git submodule add git@github.com:devopera/appconfig-redmine.git configs/redmine
+# community modules
+git submodule add https://github.com/ripienaar/puppet-concat.git modules/concat
+git submodule add https://github.com/haraldsk/puppet-module-nfs/ modules/nfs
+git submodule add https://github.com/cprice-puppet/puppetlabs-inifile.git modules/inifile
+git submodule add https://github.com/puppetlabs/puppetlabs-stdlib.git modules/stdlib
+git submodule add https://github.com/puppetlabs/puppetlabs-apache.git modules/apache
+git submodule add https://github.com/puppetlabs/puppetlabs-puppetdb.git modules/puppetdb
+git submodule add https://github.com/rafaelfelix/puppet-pear.git modules/pear
+git submodule add https://github.com/stahnma/puppet-module-epel.git modules/epel
+git submodule add https://github.com/thias/puppet-samba.git modules/samba
+git submodule add https://github.com/saz/puppet-sudo.git modules/sudo
+git submodule add https://github.com/saz/puppet-ntp.git modules/ntp
+git submodule add https://github.com/example42/puppi.git modules/puppi
+git submodule add https://github.com/example42/puppet-postfix modules/postfix
+git submodule add https://github.com/example42/puppet-monitor.git modules/monitor
+git submodule add https://github.com/example42/puppet-iptables.git modules/iptables
+git submodule add https://github.com/example42/puppet-firewall.git modules/firewall
+git submodule add https://github.com/example42/puppet-nrpe.git modules/nrpe
+git submodule add https://github.com/duritong/puppet-rkhunter modules/rkhunter
+# devopera modules forked from elsewhere
+git submodule add git@github.com:devopera/puppet-ssh.git modules/ssh
+git submodule add git@github.com:devopera/puppet-vmwaretools.git modules/vmwaretools
+git submodule add git@github.com:devopera/puppet-dns.git modules/dns
+git submodule add git@github.com:devopera/puppet-mysql.git modules/mysql
+git submodule add git@github.com:devopera/puppet-squid.git modules/squid
+git submodule add git@github.com:devopera/puppet-nagios.git modules/nagios
