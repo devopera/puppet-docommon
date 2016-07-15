@@ -107,6 +107,7 @@ class docommon::settingless {
       exec { 'old-kernel-clean-up' :
         path => '/bin:/usr/bin/',
         command => 'package-cleanup -y --oldkernels --count=2',
+        timeout => 1800,
         require => [Exec['up-to-date'], Package['yum-utils']],
       }
       # install kernel bits
