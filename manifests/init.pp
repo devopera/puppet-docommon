@@ -96,9 +96,26 @@ class docommon (
   }
 
   if (str2bool($::selinux)) {
-    if ($operatingsystem == 'fedora' and $ssh_port != 22) {
-      selinux_port { "tcp/${ssh_port}":
-        seltype => 'ssh_port_t',
+    case $operatingsystem {
+      centos, redhat: {
+        case $operatingsystemmajrelease {
+          '6' : {
+          }
+          '7', default: {
+            if ($ssh_port != 22) {
+              selinux_port { "tcp/${ssh_port}":
+                seltype => 'ssh_port_t',
+              }
+            }
+          }
+        }
+      }
+      fedora: {
+        if ($ssh_port != 22) {
+          selinux_port { "tcp/${ssh_port}":
+            seltype => 'ssh_port_t',
+          }
+        }
       }
     }
   }
