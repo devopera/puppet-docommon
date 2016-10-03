@@ -107,6 +107,13 @@ class docommon (
                 seltype => 'ssh_port_t',
               }
             }
+            # make prelink cache writeable by the /etc/cron.daily task
+            $prelink_target = '/etc/prelink.cache';
+            exec { "puppet-docommon-selinux-prelink-cache-perms" :
+              path => '/usr/bin:/bin',
+              command => "semanage fcontext -a -t prelink_cron_system_exec_t ${prelink_target} && restorecon -v ${prelink_target}",
+              onlyif => "test -f ${target}",
+            }
           }
         }
       }
