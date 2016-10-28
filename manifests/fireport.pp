@@ -71,16 +71,10 @@ define docommon::fireport (
       }
     }
     docsf: {
-      if defined(Concat["${::docsf::params::partial_tcp_in}"]) {
-        if ($protocol == 'tcp') {
-          # add fragment to target file
-          concat::fragment{ "docommon_fireport_docsf_dpt_${port}" :
-            target  => $docsf::params::partial_tcp_in,
-            content => "${port},",
-            # use port number for ordering, so ports appear in numerical order
-            order => $port,
-          }
-        }
+      docsf::fireport { "docommon_fireport_docsf_alias_dpt_${port}_optsrcip_${source}" :
+        source => $source,
+        port => $port,
+        proto => $proto,
       }
     }
     example42: {
