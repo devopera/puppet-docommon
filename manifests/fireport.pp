@@ -54,7 +54,7 @@ define docommon::fireport (
     default => $port,
   }
 
-  notify { "docommon::fireport exposed port for ${protocol}:${port} ${firewall_module} module" : }
+  notify { "docommon::fireport exposed port for ${protocol}:${source}:${port} ${firewall_module} module" : }
 
   # pass on to right type
   case $firewall_module {
@@ -74,7 +74,7 @@ define docommon::fireport (
       docsf::fireport { "docommon_fireport_docsf_alias_dpt_${port}_optsrcip_${source}" :
         source => $source,
         port => $port,
-        proto => $proto,
+        proto => $protocol,
       }
     }
     example42: {
