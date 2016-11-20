@@ -166,12 +166,12 @@ class docommon::settingless {
         }
       }      
       case $operatingsystemmajrelease {
-        '14.04': {
+        '14.04', default: {
           if ! defined(Package['ruby']) {
             package { 'ruby' : ensure => present }
           }
         }
-        '12.04', default: {
+        '12.04': {
           if ! defined(Package['rubygems']) {
             package { 'rubygems' : ensure => present }
           }
