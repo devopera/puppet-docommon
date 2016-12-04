@@ -81,6 +81,23 @@ class docommon (
   contain 'ssh::client'
   contain 'ssh::server'
 
+  # clean up service mess on Ubuntu
+  case $operatingsystem {
+    ubuntu, debian: {
+      case $::operatingsystemmajrelease {
+        default: {
+        }
+        '16.04': {
+          exec { 'docommon-ubuntu-fix-service-mess':
+            path => '/bin:/sbin:/usr/bin:/usr/sbin',
+            command => 'mv /etc/init/ssh.conf /etc/init/ssh.conf.disabled',
+            onlyif => 'test -f /etc/init/ssh.conf',
+          }
+        }
+      }
+    }
+  }
+
   # usePAM takes same value as ssh_password_authentication, unless it's forced
   $resolved_ssh_pam = $ssh_force_pam ? {
     undef => $ssh_password_authentication ? {
