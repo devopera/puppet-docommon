@@ -24,6 +24,7 @@ class docommon (
 
   # directory structure for web accessible directories /var/www
   $webfile = $docommon::params::webfile,
+  $webfile_group = $docommon::params::webfile_group,
   $known_hosts = $docommon::params::known_hosts,
   $hosts = $docommon::params::hosts,
   $notifier_dir = '/etc/puppet/tmp',
@@ -282,10 +283,13 @@ class docommon (
     group => 'root',
     mode => 0755,
   }
-  # group will need to be chowned once we create the web server group
+
+  # create group if it doesn't exist
+  ensure_resource('group', "$webfile_group", {'ensure' => 'present',})
+  # create webfile tree as user:group
   $webfile_default = {
     user => $user,
-    group => $user,
+    group => $webfile_group,
     require => File['common-webroot'],
   }
   create_resources(docommon::stickydir, $webfile, $webfile_default)

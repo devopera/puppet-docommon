@@ -37,6 +37,7 @@ class docommon::params {
     '/var/www/smb' => {
     },
   }
+  $webfile_group = 'www-data'
 
   $known_hosts = {
     'github.com' => {
