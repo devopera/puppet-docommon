@@ -16,14 +16,6 @@ class docommon::settingless {
     }
   }
 
-  # avoid rkhunter false-positives using prelink
-  anchor { 'docommon-settingless-prelink-ready': }->
-  exec { 'docommon-settingless-prelink-exceptions' :
-    path => '/bin:/sbin:/usr/bin:/usr/sbin',
-    command => 'prelink /usr/bin/wget && prelink /usr/bin/lynx',
-    require => [Exec['up-to-date'], Package['prelink']],
-  }
-
   # update rkhunter after updating rpms
   if defined(Class['dorkhunter']) {
     Exec <| title == 'up-to-date' |> ~> Exec <| title == 'init_rkunter_db' |>
