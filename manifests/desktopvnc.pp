@@ -67,9 +67,9 @@ define docommon::desktopvnc (
       }
     
       # install a remote desktop client, just because it's useful
-      if ! defined(Package['tsclient']) {
-        package { 'tsclient' : ensure => present }
-      }
+      # if ! defined(Package['tsclient']) {
+      #   package { 'tsclient' : ensure => present }
+      # }
 
       # create service initialisation file
       if ! defined(File[$config_file_alias]) {
@@ -172,8 +172,8 @@ define docommon::desktopvnc (
     }
   }
   # install packages common to both operating systems
-  if ! defined(Package['rdesktop']) {
-    package { 'rdesktop' : ensure => present }
+  if ! defined(Package['freerdp']) {
+    package { 'freerdp' : ensure => present }
   }
 
   anchor { "docommon-desktop-config-${title}" :
