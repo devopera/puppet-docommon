@@ -246,6 +246,16 @@ class docommon (
     password => $user_pass_hash,
   }
 
+  # ensure that we've got a .ssh directory
+  file { 'docommon-user-ssh-dir' :
+    name   => "/home/${user}/.ssh",
+    ensure => 'directory',
+    owner  => $user,
+    group  => $user,
+    mode   => 700,
+    require => [User['main-user']],
+  }
+
   # allow main user to use sudo
   class { 'sudo': }
   sudo::conf { "${user}":
