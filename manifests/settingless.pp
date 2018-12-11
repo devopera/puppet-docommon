@@ -46,6 +46,9 @@ class docommon::settingless {
   if ! defined(Package['iotop']) {
     package { 'iotop' : ensure => present }
   }
+  if ! defined(Package['expect']) {
+    package { 'expect' : ensure => present }
+  }
   if ! defined(Package['dos2unix']) {
     package { 'dos2unix' : ensure => present }
   }  
