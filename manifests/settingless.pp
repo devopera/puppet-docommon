@@ -222,9 +222,10 @@ class docommon::settingless {
   if ! defined(Package['git']) {
     package { 'git' : ensure => present }
   }
-  if ! defined(Package['subversion']) {
-    package { 'subversion' : ensure => present }
-  }
+  # @todo remove, deprecated
+  #if ! defined(Package['subversion']) {
+  #  package { 'subversion' : ensure => present }
+  #}
   if ! defined(Package['mercurial']) {
     package { 'mercurial' : ensure => present }
   }
