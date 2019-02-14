@@ -76,7 +76,14 @@ class docommon::settingless {
   # OS-specific variants
   case $operatingsystem {
     centos, redhat, fedora: {
-      include 'epel'
+      if ($::architecture == 'x86_64') {
+        # epel module only copes with x86
+        include 'epel'
+        # no kernel-devel on arm
+        if ! defined(Package['kernel-devel']) {
+          package { 'kernel-devel' : ensure => present }
+        }
+      }
       if ! defined(Package['system-config-firewall-tui']) {
         package { 'system-config-firewall-tui' : ensure => present }
       }
@@ -109,9 +116,6 @@ class docommon::settingless {
       if ! defined(Package['kernel-headers']) {
         package { 'kernel-headers' : ensure => present }
       }      
-      if ! defined(Package['kernel-devel']) {
-        package { 'kernel-devel' : ensure => present }
-      }      
       # tell chkconfig to disable firstboot as we don't need it
       service { 'firstboot' :
         enable => false,
@@ -142,6 +146,9 @@ class docommon::settingless {
       if ! defined(Package['linux-kernel-headers']) {
         package { 'linux-kernel-headers' : ensure => present }
       }      
+      if ! defined(Package['gawk']) {
+        package { 'gawk' : ensure => present }
+      }
       if ! defined(Package['ack-grep']) {
         package { 'ack-grep' : ensure => present }
       }
