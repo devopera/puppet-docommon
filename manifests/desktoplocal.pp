@@ -28,6 +28,10 @@ class docommon::desktoplocal (
         command => 'ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target',
       }
 
+      if ! defined(Package['freerdp']) {
+        package { 'freerdp' : ensure => present }
+      }
+
     }
     ubuntu, debian: {
 
