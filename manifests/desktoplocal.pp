@@ -5,6 +5,8 @@ class docommon::desktoplocal (
   # setup defaults
 
   $user = 'web',
+  $service_enable = true,
+  $service_ensure = 'running',
 
   # end of class arguments
   # ----------------------
@@ -20,6 +22,7 @@ class docommon::desktoplocal (
         command => '/usr/bin/yum -y groupinstall "GNOME Desktop" "Graphical Administration Tools"',
         timeout => 60*60,
         require => Exec['up-to-date'],
+        before => Service['desktoplocal-service'],
       }
 
       # start desktop on system startup
@@ -38,5 +41,10 @@ class docommon::desktoplocal (
     }
   }
 
+  service { 'desktoplocal-service' :
+    name => 'gdm',
+    enable => $service_enable,
+    ensure => $service_ensure,
+  }
 
 }
